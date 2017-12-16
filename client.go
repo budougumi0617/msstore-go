@@ -93,6 +93,7 @@ func NewClient(tenantID, clientID, secretKey string) (*Client, error) {
 }
 
 // Init gets Token from Azure Active Directory.
+// POST https://login.microsoftonline.com/<tenant_id>/oauth2/token
 func (c *Client) Init() error {
 	u, err := url.Parse(azureEndpoint)
 	if err != nil {
@@ -129,6 +130,7 @@ func (c *Client) Init() error {
 }
 
 // GetMyApps gets Windows applications infomation from Windows Developer Center.
+// GET https://manage.devcenter.microsoft.com/v1.0/my/applications
 func (c *Client) GetMyApps() error {
 	// GET Srore information
 	u := c.URL
